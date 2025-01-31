@@ -13,6 +13,7 @@ import NftCollectionPriceCard from "./components/NftCollectionPriceCard.tsx"
 import NftTransaction from "./components/NftTransaction.tsx"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select";
 import NftTraders from "./components/NftTraders";
+import NftAnalytics from './components/NftAnalytics';
 
 interface Blockchain {
   metadata: {
@@ -70,7 +71,7 @@ const App: React.FC = () => {
   
   const [priceEstimate, setPriceEstimate] = useState<PriceEstimateData | null>(null);
   const [collectionPriceEstimate, setCollectionPriceEstimate] = useState<PriceEstimateData[] | null>(null);
-  const [activeTab, setActiveTab] = useState<"nft-details" | "nft-transaction" | "nft-traders" | "trends">("nft-details")
+  const [activeTab, setActiveTab] = useState<"nft-details" | "nft-transaction" | "nft-traders" | "nft-analytics" | "trends">("nft-details")
   const [Tradersdata, setTradersData] = useState<TradersData | null>(null)
   const [apiKey, setApiKey] = useState<string>(() => {
     return localStorage.getItem("nft_analytics_api_key") || ""
@@ -212,7 +213,8 @@ const App: React.FC = () => {
                 'nft-details': 'NFT Details',
                 'nft-transaction': 'NFT Transaction',
                 'nft-traders': 'NFT Traders',
-                'trends': 'Broad Analysis'
+                'trends': 'Broad Analysis',
+                "nft-analytics" : 'Nft Analysis'
               }[activeTab]}
             </SelectValue>
           </SelectTrigger>
@@ -221,6 +223,7 @@ const App: React.FC = () => {
               <SelectItem value="nft-details" className="hover:bg-zinc-700 focus:bg-blue-500 focus:text-white cursor-pointer">NFT Details</SelectItem>
               <SelectItem value="nft-transaction" className="hover:bg-zinc-700 focus:bg-blue-500 focus:text-white cursor-pointer">NFT Transaction</SelectItem>
               <SelectItem value="nft-traders" className="hover:bg-zinc-700 focus:bg-blue-500 focus:text-white cursor-pointer">NFT Traders</SelectItem>
+              <SelectItem value="nft-analytics" className="hover:bg-zinc-700 focus:bg-blue-500 focus:text-white cursor-pointer">NFT Analytics</SelectItem>
               <SelectItem value="trends" className="hover:bg-zinc-700 focus:bg-blue-500 focus:text-white cursor-pointer">Broad Analysis</SelectItem>
             </SelectGroup>
           </SelectContent>
@@ -453,6 +456,49 @@ const App: React.FC = () => {
                         </div>
                       )}
                     </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+            {activeTab === "nft-analytics" && (
+              <Card className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl font-black uppercase bg-orange-200 p-4 border-4 border-black inline-block">NFT Analytics</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <button
+                      onClick={() => {
+                        chrome.runtime.sendMessage({ type: 'GET_NFT_DETAILS' }, (response) => {
+                          if (response?.nftDetails) {
+                            setNftDetails(response.nftDetails);
+                            setError(null);
+                          } else {
+                            setError('Please navigate to an OpenSea NFT page to extract NFT details.');
+                            setNftDetails(null);
+                          }
+                        });
+                      }}
+                      className="w-full bg-blue-200 hover:bg-blue-300 text-black font-bold py-2 px-4 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all"
+                    >
+                      Extract NFT Details
+                    </button>
+                    {nftDetails && (
+                      <div className="space-y-4">
+                        <div className="space-y-2 bg-yellow-100 p-4 border-4 border-black">
+                          <p className="text-sm font-bold">Blockchain: <span className="text-blue-600">{nftDetails.blockchain}</span></p>
+                          <p className="text-sm font-bold">Contract Address: <span className="text-blue-600">{nftDetails.contractAddress}</span></p>
+                          <p className="text-sm font-bold">Token ID: <span className="text-blue-600">{nftDetails.tokenId}</span></p>
+                        </div>
+                        <NftAnalytics
+                          blockchain={nftDetails.blockchain}
+                          contractAddress={nftDetails.contractAddress}
+                          tokenId={nftDetails.tokenId}
+                          timeRange={timeRange}
+                          apiKey={apiKey}
+                        />
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
