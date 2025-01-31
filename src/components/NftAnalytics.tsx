@@ -77,38 +77,13 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
   const [scoresData, setScoresData] = useState<ScoresData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeMetric, setActiveMetric] = useState<string>('performance');
-  const [chartData, setChartData] = useState<{
+  const [, setChartData] = useState<{
     timestamp: string;
     performance: number;
     market_activity: number;
     price: number;
     volume: number;
   }[]>([]);
-
-  const metricOptions = [
-    { value: 'performance', label: 'Performance' },
-    { value: 'market_activity', label: 'Market Activity' },
-    { value: 'price', label: 'Price' },
-    { value: 'volume', label: 'Volume' }
-  ];
-
-  const [sortBy, setSortBy] = useState<string>("sales");
-
-  const sortOptions = [
-    { value: 'sales', label: 'Sales' },
-    { value: 'sales_change', label: 'Sales Change' },
-    { value: 'assets', label: 'Assets' },
-    { value: 'assets_change', label: 'Assets Change' },
-    { value: 'transactions', label: 'Transactions' },
-    { value: 'transactions_change', label: 'Transactions Change' },
-    { value: 'transfers', label: 'Transfers' },
-    { value: 'transfers_change', label: 'Transfers Change' },
-    { value: 'volume', label: 'Volume' },
-    { value: 'volume_change', label: 'Volume Change' },
-    { value: 'floor_price', label: 'Floor Price' },
-    { value: 'floor_price_eth', label: 'Floor Price ETH' }
-  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -125,7 +100,7 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
               contract_address: contractAddress,
               token_id: tokenId,
               time_range: timeRange,
-              sort_by: sortBy
+              sort_by: "sales"
             },
             headers: {
               'x-api-key': apiKey
@@ -210,8 +185,6 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
             volume: defaultTrendData.volume_trend[index] || 0
           }));
           setChartData(formattedData);
-        } else {
-          setChartData([]);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -222,7 +195,7 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
     };
 
     fetchData();
-  }, [blockchain, contractAddress, tokenId, timeRange, apiKey, sortBy]);
+  }, [blockchain, contractAddress, tokenId, timeRange, apiKey]);
 
   if (isLoading) {
     return (
@@ -250,35 +223,9 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
 
   return (
     <div className="space-y-4">
-      <div className="w-full bg-white p-4 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-        <div className="flex justify-between items-center gap-4 mb-4">
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="flex-1 h-12 text-sm bg-white font-black uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all p-2 cursor-pointer"
-          >
-            {sortOptions.map((option) => (
-              <option key={option.value} value={option.value} className="font-bold">
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <select
-            value={activeMetric}
-            onChange={(e) => setActiveMetric(e.target.value)}
-            className="flex-1 h-12 text-sm bg-white font-black uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all p-2 cursor-pointer"
-          >
-            {metricOptions.map((option) => (
-              <option key={option.value} value={option.value} className="font-bold">
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
       <Card className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all">
         <CardContent>
+        <h2 className="text-xl font-black mb-4">Analytics of NFT</h2>
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-2 bg-purple-100 p-4 border-4 border-black">
               <h3 className="font-black text-lg">Trading Volume (USD)</h3>

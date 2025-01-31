@@ -1,50 +1,131 @@
-# React + TypeScript + Vite
+# BitsCrunch NFT Analytics Extension 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A powerful browser extension that provides comprehensive NFT analytics, price estimation, and market insights directly from your browser. Built with React, TypeScript, and Tailwind CSS, this extension helps you make informed decisions in the NFT market.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### NFT Analytics Dashboard
+- Real-time trading volume, assets, sales, and transaction metrics
+- Historical performance trends and market activity analysis
+- Detailed transfer tracking and volume changes
 
-## Expanding the ESLint configuration
+### Washtrade Detection
+- Advanced washtrade detection metrics
+- Suspect sales and transaction monitoring
+- Washtrade volume tracking and wallet analysis
+- Real-time washtrade status indicators
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Holder Analytics
+- Current and historical holder statistics
+- Hold duration analysis
+- Past owners tracking
+- New wallet holder monitoring
 
-- Configure the top-level `parserOptions` property like this:
+### Price Analysis
+- Current and historical price tracking
+- Price range analysis (All-time high/low)
+- Rarity score and ranking
+- Price estimates and ceiling predictions
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Market Insights
+- Trader activity monitoring
+- Buyer/seller ratio analysis
+- Market trend visualization
+- Collection-wide price estimations
+
+## 🛠️ Technical Stack
+
+- **Frontend Framework**: React with TypeScript
+- **Styling**: Tailwind CSS with custom UI components
+- **Data Visualization**: Custom charting components
+- **API Integration**: Axios for data fetching
+- **State Management**: React Hooks and Context
+- **Build Tool**: Vite
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/bitscrunch-nft-extension.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies:
+```bash
+cd bitscrunch-nft-extension
+npm install
 ```
+
+3. Build the extension:
+```bash
+npm run build
+```
+
+4. Load the extension in Chrome:
+   - Open Chrome and navigate to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked"
+   - Select the `dist` folder from your build
+
+## 🚀 Usage
+
+1. Click on the extension icon in your browser
+2. Enter your API key in the settings
+3. Navigate to any NFT on OpenSea
+4. Click "Extract NFT Details" to analyze the NFT
+5. Explore different analytics tabs:
+   - NFT Details
+   - NFT Transactions
+   - NFT Traders
+   - NFT Analytics
+   - Broad Market Analysis
+
+## 🎨 UI Features
+
+- Modern, clean interface with a playful design
+- Responsive cards with hover effects and shadow animations
+- Color-coded metrics for better visualization
+- Interactive charts and graphs with time range selection
+- Real-time data updates with loading states
+- Intuitive tab-based navigation between different analytics views:
+  - NFT Details with price estimates
+  - Transaction history and patterns
+  - Trader activity analysis
+  - Market analytics and trends
+  - Collection-wide insights
+- Customizable filters for blockchain networks and metrics
+- Time range selection (24h, 7d, 30d, etc.)
+- API key management with secure storage
+
+## 🔑 API Integration
+
+This extension integrates with the UnleashNFTs API to provide comprehensive NFT analytics. You'll need an API key to access the following endpoints:
+
+- `/api/v2/nft/blockchains` - Get supported blockchain networks
+- `/api/v2/nft/market-trend` - Fetch market trend data
+- `/api/v2/nft/traders` - Get trader activity metrics
+- `/api/v2/nft/washtrade` - Analyze washtrade patterns
+- `/api/v2/nft/price-estimate` - Get NFT price estimations
+- `/api/v2/nft/collection-price-estimate` - Get collection-wide price analysis
+- `/api/v2/nft/transactions` - View NFT transaction history
+
+and more...
+- `/api/v2/nft/analytics`
+- `/api/v2/nft/holders`
+- `/api/v2/nft/scores`
+- `/api/v2/nft/traders`
+
+The API key can be configured in the extension settings and is securely stored in local storage.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [BitsCrunch](https://www.bitscrunch.com/) API
+- UI components powered by shadcn/ui
+- Charts and visualizations using custom React components
