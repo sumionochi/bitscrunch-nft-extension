@@ -2,6 +2,8 @@
 
 A Chrome extension that provides comprehensive NFT analysis and market insights using the BitScrunch API. This extension helps users make informed decisions while purchasing NFTs on OpenSea by providing real-time analytics, price estimates, and market trends, this extension helps you make informed decisions in the NFT market.
 
+<img width="1374" alt="Screenshot 2025-01-31 at 7 36 24 PM" src="https://github.com/user-attachments/assets/0bc63621-3803-4fec-b89c-90a670c6ec21" />
+
 ## 🌟 Features
 
 ## 1. NFT Information Analysis
@@ -10,6 +12,8 @@ A Chrome extension that provides comprehensive NFT analysis and market insights 
 - Smart contract address validation
 - Token ID verification and metadata
 - Rarity score and ranking
+
+<img width="1368" alt="Screenshot 2025-01-31 at 7 36 38 PM" src="https://github.com/user-attachments/assets/879de8ff-d538-4248-9adb-273af1481e78" />
 
 ## 2. Price Analytics
 - Real-time price tracking
@@ -22,6 +26,9 @@ A Chrome extension that provides comprehensive NFT analysis and market insights 
 - All-time high/low tracking
 - Collection-wide price comparisons
 
+<img width="1374" alt="Screenshot 2025-01-31 at 7 36 59 PM" src="https://github.com/user-attachments/assets/7417499b-bda8-48ec-b513-1f3d1aae5ea2" />
+
+
 ## 3. Market Intelligence
 - Trading volume analytics
 - Real-time market activity monitoring
@@ -33,7 +40,11 @@ A Chrome extension that provides comprehensive NFT analysis and market insights 
   - 90 days
   - All time
 - Asset performance tracking
-- Market trend visualization
+- Market trend visualizationz
+
+<img width="1371" alt="Screenshot 2025-01-31 at 7 37 33 PM" src="https://github.com/user-attachments/assets/26696252-5644-4573-a0a7-3f505a29550e" />
+
+<img width="1372" alt="Screenshot 2025-01-31 at 7 38 24 PM" src="https://github.com/user-attachments/assets/e926fd67-93ba-4c5e-8c18-36fa112b87e8" />
 
 ## 4. Trader Analytics
 - Comprehensive buyer/seller behavior analysis
@@ -68,6 +79,9 @@ A Chrome extension that provides comprehensive NFT analysis and market insights 
 - Market performance indicators
 - Asset distribution statistics
 - Collection price estimations
+
+<img width="1377" alt="Screenshot 2025-01-31 at 7 38 47 PM" src="https://github.com/user-attachments/assets/23f955cc-5897-453d-a4ab-73767edc3377" />
+
 
 ## 8. Data Visualization
 - Interactive charts and graphs
@@ -172,6 +186,9 @@ bitscrunch-nft-extension/
 ```
 
 The API key can be configured in the extension settings and is securely stored in local storage.
+
+<img width="1373" alt="Screenshot 2025-01-31 at 7 39 26 PM" src="https://github.com/user-attachments/assets/fc78255e-bc17-4e39-8076-0e5609ac22dc" />
+
 
 ## Environment Setup
 
