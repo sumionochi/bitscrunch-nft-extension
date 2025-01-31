@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, CardContent } from './ui/card';
 import { format } from 'date-fns';
-import NftAnalyticsChart from './NftAnalyticsChart';
 
 interface NftAnalyticsProps {
   blockchain: string;
@@ -275,9 +274,6 @@ const NftAnalytics: React.FC<NftAnalyticsProps> = ({
               </option>
             ))}
           </select>
-        </div>
-        <div className="mt-4 border-4 border-black p-4">
-          <NftAnalyticsChart data={chartData} metric={activeMetric} />
         </div>
       </div>
 
