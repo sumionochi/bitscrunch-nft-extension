@@ -1,37 +1,80 @@
 # BitsCrunch NFT Analytics Extension 🚀
 
-A powerful browser extension that provides comprehensive NFT analytics, price estimation, and market insights directly from your browser. Built with React, TypeScript, and Tailwind CSS, this extension helps you make informed decisions in the NFT market.
+A Chrome extension that provides comprehensive NFT analysis and market insights using the BitScrunch API. This extension helps users make informed decisions while purchasing NFTs on OpenSea by providing real-time analytics, price estimates, and market trends, this extension helps you make informed decisions in the NFT market.
 
 ## 🌟 Features
 
-### NFT Analytics Dashboard
-- Real-time trading volume, assets, sales, and transaction metrics
-- Historical performance trends and market activity analysis
-- Detailed transfer tracking and volume changes
-
-### Washtrade Detection
-- Advanced washtrade detection metrics
-- Suspect sales and transaction monitoring
-- Washtrade volume tracking and wallet analysis
-- Real-time washtrade status indicators
-
-### Holder Analytics
-- Current and historical holder statistics
-- Hold duration analysis
-- Past owners tracking
-- New wallet holder monitoring
-
-### Price Analysis
-- Current and historical price tracking
-- Price range analysis (All-time high/low)
+## 1. NFT Information Analysis
+- Automatic data extraction from OpenSea listings
+- Blockchain details and verification
+- Smart contract address validation
+- Token ID verification and metadata
 - Rarity score and ranking
-- Price estimates and ceiling predictions
 
-### Market Insights
-- Trader activity monitoring
-- Buyer/seller ratio analysis
+## 2. Price Analytics
+- Real-time price tracking
+- Price estimation metrics:
+  - Current market price
+  - Lower and upper bound estimates
+  - Price confidence indicators
+  - Price ceiling predictions
+- Historical price analysis
+- All-time high/low tracking
+- Collection-wide price comparisons
+
+## 3. Market Intelligence
+- Trading volume analytics
+- Real-time market activity monitoring
+- Transaction history analysis
+- Customizable time ranges:
+  - 24 hours
+  - 7 days
+  - 30 days
+  - 90 days
+  - All time
+- Asset performance tracking
 - Market trend visualization
-- Collection-wide price estimations
+
+## 4. Trader Analytics
+- Comprehensive buyer/seller behavior analysis
+- Interactive visualization:
+  - Bar charts for trader activities
+  - Trend line graphs
+- Buyer to seller ratio analysis
+- Historical transaction details
+- New wallet monitoring
+
+## 5. Wash Trade Detection System
+- Advanced wash trade identification
+- Real-time status indicators
+- Suspect transaction monitoring
+- Wash trade volume tracking
+- Suspicious wallet pattern analysis
+- Clean/Suspicious status classification
+
+## 6. Holder Analytics
+- Current holder statistics
+- Historical ownership data
+- Hold duration analysis
+- Wallet tracking:
+  - Current owners
+  - Past owners
+  - New holders
+- Transfer history monitoring
+
+## 7. Collection Analytics
+- Collection-wide metrics
+- Volume period analysis
+- Market performance indicators
+- Asset distribution statistics
+- Collection price estimations
+
+## 8. Data Visualization
+- Interactive charts and graphs
+- Real-time metric updates
+- Historical trend visualization
+- Comparative analysis tools
+- Custom time range filters
 
 ## 🛠️ Technical Stack
 
@@ -114,15 +157,41 @@ and more...
 - `/api/v2/nft/scores`
 - `/api/v2/nft/traders`
 
+## Project Structure
+
+```plaintext
+bitscrunch-nft-extension/
+├── src/
+│   ├── components/
+│   │   └── NFTAnalytics/
+│   ├── App.tsx
+│   └── ...
+├── dist/
+├── package.json
+└── ...
+```
+
 The API key can be configured in the extension settings and is securely stored in local storage.
 
-## 🤝 Contributing
+## Environment Setup
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Create a `.env` file in the root directory:
+```properties
+'x-api-key': 'your-bitscrunch-api-key'
+```
 
-## 📄 License
+## Contributing
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Acknowledgments
+
+- BitScrunch API for providing comprehensive NFT analytics
+- OpenSea for NFT marketplace integration
 
 ## 🙏 Acknowledgments
 
